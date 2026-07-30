@@ -1,0 +1,495 @@
+{
+	"info": {
+		"_postman_id": "8b069e8d-b424-47be-9aba-14918a3a8f22",
+		"name": "Research Platform API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"researcher@university.edu\",\n  \"password\": \"securePassword123\",\n  \"full_name\": \"Dr. Jane Doe\",\n  \"role\": \"researcher\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "researcher@university.edu",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "securePassword123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile Info /me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Research Profile",
+			"item": [
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users/me/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"organization\": \"Infosys Technology Lab\",\n  \"designation\": \"Lead Scientist\",\n  \"research_domain\": \"Biotechnology\",\n  \"technology_area\": \"Genomic Sequencing\",\n  \"research_interests\": \"DNA Synthesis, CRISPR\",\n  \"keywords\": \"biotech, gene, editing\",\n  \"bio\": \"Studying genetic modifications at nanoscale.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/me/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"organization\": \"Infosys Technology Lab\",\n  \"designation\": \"Principal Investigator\",\n  \"research_domain\": \"Biotechnology & AI\",\n  \"technology_area\": \"Genomic Systems\",\n  \"research_interests\": \"DNA Synthesis, CRISPR Neural Nets\",\n  \"keywords\": \"biotech, bio-ai, gene\",\n  \"bio\": \"Updated details mapping biosecurity.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/me/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users/me/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publications",
+			"item": [
+				{
+					"name": "List Publications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/publications/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"publications",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Publication",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Advanced Decentralized Ledger Networks\",\n  \"authors\": \"Dr. Jane Doe, Dr. Al Morris\",\n  \"journal\": \"IEEE Network Security\",\n  \"publication_year\": 2026,\n  \"doi\": \"10.1109/LNET.2026.314\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/publications/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"publications",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Publication",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Advanced Decentralized Ledger Networks (Updated)\",\n  \"authors\": \"Dr. Jane Doe, Dr. Al Morris, Bob Lee\",\n  \"journal\": \"IEEE Network Security\",\n  \"publication_year\": 2026,\n  \"doi\": \"10.1109/LNET.2026.314\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/publications/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"publications",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Publication",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/publications/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"publications",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patents",
+			"item": [
+				{
+					"name": "List Patents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/patents/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patents",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Patent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Neural network pruning and layout automation\",\n  \"inventor\": \"Dr. Jane Doe, Dr. Al Morris\",\n  \"assignee\": \"Infosys Licensing LLC\",\n  \"technology_domain\": \"Artificial Intelligence\",\n  \"filing_date\": \"2026-07-29\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patents/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patents",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patent",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Neural network pruning and layout automation (Updated)\",\n  \"inventor\": \"Dr. Jane Doe, Dr. Al Morris\",\n  \"assignee\": \"Infosys Tech Licensing LLC\",\n  \"technology_domain\": \"Artificial Intelligence\",\n  \"filing_date\": \"2026-07-29\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patents/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patents",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Patent",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/patents/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patents",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "YOUR_JWT_ACCESS_TOKEN",
+			"type": "string"
+		}
+	]
+}

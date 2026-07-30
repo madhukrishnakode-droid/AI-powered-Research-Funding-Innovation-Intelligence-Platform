@@ -1,0 +1,17 @@
+# Node dependencies
+**/node_modules/
+**/dist/
+**/build/
+
+# Python cache and environments
+**/__pycache__/
+**/*.pyc
+venv/
+.venv/
+env/
+
+# Environment secrets and databases
+.env
+**/.env
+**/*.db
+**/*.sqlite3

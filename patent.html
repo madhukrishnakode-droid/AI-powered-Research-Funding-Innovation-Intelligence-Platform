@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patent Analysis — InnovateHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">
+                <span class="brand-logo">IH</span>
+                InnovateHub
+            </a>
+            <button class="nav-toggle" onclick="toggleNav()">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="funding.html">Funding</a>
+                <a href="research.html">Research</a>
+                <a href="patent.html" class="active">Patents</a>
+                <a href="assistant.html">Assistant</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="nav-actions">
+                <a href="settings.html" class="btn btn-outline">Settings</a>
+                <a href="profile.html" class="avatar" title="User Profile">JD</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Patent Analysis</h1>
+            <p>Map patent landscapes, detect white space, and protect your inventions early.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">&#128161;</span>
+                    <div class="stat-value">9</div>
+                    <div class="stat-label">Patents Filed</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#9989;</span>
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Granted</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#9203;</span>
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Under Review</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#128269;</span>
+                    <div class="stat-value">340</div>
+                    <div class="stat-label">Related Patents Found</div>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="search-bar" style="margin:30px 0 26px;">
+                <input type="text" placeholder="Search patents, assignees, CPC codes, or keywords...">
+                <button class="btn btn-primary" type="button">Analyze</button>
+            </div>
+
+            <!-- Patent portfolio -->
+            <h2 class="card-title" style="margin-bottom:20px;">Your Patent Portfolio</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patent</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Filing Date</th>
+                            <th>Jurisdiction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="title">US-2024-0184</span></td>
+                            <td>Adaptive Nanomaterial Energy Storage System</td>
+                            <td><span class="badge badge-success">Granted</span></td>
+                            <td>Mar 2024</td>
+                            <td>United States</td>
+                        </tr>
+                        <tr>
+                            <td><span class="title">EP-2024-0921</span></td>
+                            <td>Federated Learning Pipeline for Sensor Networks</td>
+                            <td><span class="badge badge-warning">Under Review</span></td>
+                            <td>Jul 2024</td>
+                            <td>European Union</td>
+                        </tr>
+                        <tr>
+                            <td><span class="title">US-2025-0033</span></td>
+                            <td>Quantum-Safe Encryption for Biomedical Data</td>
+                            <td><span class="badge badge-success">Granted</span></td>
+                            <td>Jan 2025</td>
+                            <td>United States</td>
+                        </tr>
+                        <tr>
+                            <td><span class="title">JP-2025-0117</span></td>
+                            <td>AI-Assisted Drug Target Identification</td>
+                            <td><span class="badge badge-warning">Under Review</span></td>
+                            <td>Apr 2025</td>
+                            <td>Japan</td>
+                        </tr>
+                        <tr>
+                            <td><span class="title">US-2026-0012</span></td>
+                            <td>Digital Twin Framework for Clean Energy Grids</td>
+                            <td><span class="badge badge-danger">Draft</span></td>
+                            <td>Jun 2026</td>
+                            <td>United States</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- White space -->
+            <div class="two-col" style="margin-top:30px;">
+                <div class="card">
+                    <h3 class="card-title">Detected White Space</h3>
+                    <p style="font-size:15px; margin-bottom:14px;">
+                        Underserved areas in your domain with limited existing protection:
+                    </p>
+                    <div class="tag">Self-Healing Battery Electrolytes</div>
+                    <div class="tag">Edge AI for Wearable Diagnostics</div>
+                    <div class="tag">Zero-Knowledge Health Records</div>
+                    <div class="tag">Quantum Simulation of Drug Interactions</div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Competition Insights</h3>
+                    <div class="list-item">
+                        <div>
+                            <div><strong class="text-primary">TechCorp Research</strong></div>
+                            <div class="list-meta">112 patents in adjacent space &middot; filing activity up 18%</div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div><strong class="text-primary">NanoSight Labs</strong></div>
+                            <div class="list-meta">87 patents &middot; strongest in energy storage materials</div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div><strong class="text-primary">QuantumBridge</strong></div>
+                            <div class="list-meta">64 patents &middot; leader in quantum-safe protocols</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand-logo">IH</span>
+                        InnovateHub
+                    </a>
+                    <p style="font-size:14px; color:rgba(255,255,255,.7);">
+                        AI-powered intelligence for research funding,
+                        innovation, and discovery.
+                    </p>
+                </div>
+                <div>
+                    <h4>Platform</h4>
+                    <a href="funding.html">Funding Opportunities</a>
+                    <a href="research.html">Research Explorer</a>
+                    <a href="patent.html">Patent Analysis</a>
+                    <a href="assistant.html">AI Assistant</a>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <a href="publications.html">Publications</a>
+                    <a href="profile.html">User Profile</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Sign Out</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 InnovateHub. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

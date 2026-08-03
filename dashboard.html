@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — InnovateHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">
+                <span class="brand-logo">IH</span>
+                InnovateHub
+            </a>
+            <button class="nav-toggle" onclick="toggleNav()">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="funding.html">Funding</a>
+                <a href="research.html">Research</a>
+                <a href="patent.html">Patents</a>
+                <a href="assistant.html">Assistant</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="nav-actions">
+                <a href="settings.html" class="btn btn-outline">Settings</a>
+                <a href="profile.html" class="avatar" title="User Profile">JD</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Dashboard</h1>
+            <p>Welcome back, Dr. Jordan Avery. Here's your research activity at a glance.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">&#127919;</span>
+                    <div class="stat-value">$1.2M</div>
+                    <div class="stat-label">Active Grant Funding</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#9998;</span>
+                    <div class="stat-value">14</div>
+                    <div class="stat-label">Applications in Review</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#128218;</span>
+                    <div class="stat-value">38</div>
+                    <div class="stat-label">Publications</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#128161;</span>
+                    <div class="stat-value">9</div>
+                    <div class="stat-label">Patents Filed</div>
+                </div>
+            </div>
+
+            <div class="two-col" style="margin-top:32px;">
+
+                <!-- Recent activity -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Activity</h3>
+                        <a href="#" class="feature-link">View All</a>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="avatar">NS</div>
+                        <div>
+                            <div><strong class="text-primary">National Science Foundation</strong> — Grant deadline updated</div>
+                            <div class="list-meta">2 hours ago</div>
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="avatar">AI</div>
+                        <div>
+                            <div><strong class="text-primary">AI Assistant</strong> — Summarized 5 new publications for you</div>
+                            <div class="list-meta">Yesterday</div>
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="avatar">ER</div>
+                        <div>
+                            <div><strong class="text-primary">Research Explorer</strong> — New trend detected in Quantum Materials</div>
+                            <div class="list-meta">2 days ago</div>
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="avatar">PT</div>
+                        <div>
+                            <div><strong class="text-primary">Patent Office</strong> — Status update on patent #US-2024-0184</div>
+                            <div class="list-meta">3 days ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active projects -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Active Projects</h3>
+                        <a href="research.html" class="feature-link">Explore &rarr;</a>
+                    </div>
+
+                    <div style="margin-bottom:20px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <strong class="text-primary">Adaptive Nanomaterials for Clean Energy</strong>
+                            <span class="badge badge-gradient">72%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-fill" style="width:72%;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom:20px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <strong class="text-primary">AI-Assisted Drug Discovery Pipeline</strong>
+                            <span class="badge badge-gradient">48%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-fill" style="width:48%;"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <strong class="text-primary">Quantum Sensing for Biomedical Imaging</strong>
+                            <span class="badge badge-gradient">25%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-fill" style="width:25%;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:26px;">
+                        <a href="assistant.html" class="btn btn-primary btn-block">Ask AI Assistant</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand-logo">IH</span>
+                        InnovateHub
+                    </a>
+                    <p style="font-size:14px; color:rgba(255,255,255,.7);">
+                        AI-powered intelligence for research funding,
+                        innovation, and discovery.
+                    </p>
+                </div>
+                <div>
+                    <h4>Platform</h4>
+                    <a href="funding.html">Funding Opportunities</a>
+                    <a href="research.html">Research Explorer</a>
+                    <a href="patent.html">Patent Analysis</a>
+                    <a href="assistant.html">AI Assistant</a>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <a href="publications.html">Publications</a>
+                    <a href="profile.html">User Profile</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Sign Out</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 InnovateHub. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

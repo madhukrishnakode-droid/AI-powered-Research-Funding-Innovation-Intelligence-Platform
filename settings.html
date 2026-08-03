@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings — InnovateHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">
+                <span class="brand-logo">IH</span>
+                InnovateHub
+            </a>
+            <button class="nav-toggle" onclick="toggleNav()">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="funding.html">Funding</a>
+                <a href="research.html">Research</a>
+                <a href="patent.html">Patents</a>
+                <a href="assistant.html">Assistant</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="nav-actions">
+                <a href="settings.html" class="btn btn-outline">Settings</a>
+                <a href="profile.html" class="avatar" title="User Profile">JD</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Settings</h1>
+            <p>Manage your account, notifications, and preferences.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="two-col">
+
+                <!-- Settings sidebar -->
+                <div class="card">
+                    <h3 class="card-title">Settings</h3>
+                    <div class="tabs" style="border-bottom:none; margin-bottom:0; flex-direction:column;">
+                        <a href="#account" class="tab active" style="border-bottom:none; background:var(--bg); border-radius:10px;">Account</a>
+                        <a href="#notifications" class="tab" style="border-bottom:none;">Notifications</a>
+                        <a href="#preferences" class="tab" style="border-bottom:none;">Preferences</a>
+                        <a href="#security" class="tab" style="border-bottom:none;">Security</a>
+                    </div>
+                </div>
+
+                <!-- Settings content -->
+                <div>
+
+                    <!-- Account -->
+                    <div class="card" id="account" style="margin-bottom:24px;">
+                        <h3 class="card-title">Account Information</h3>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="first">First Name</label>
+                                    <input class="form-input" type="text" id="first" value="Jordan">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="last">Last Name</label>
+                                    <input class="form-input" type="text" id="last" value="Avery">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address</label>
+                                <input class="form-input" type="email" id="email" value="j.avery@univ-innovation.edu">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="org">Institution</label>
+                                <input class="form-input" type="text" id="org" value="University of Innovation">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="bio">Short Bio</label>
+                                <textarea class="form-textarea" id="bio" placeholder="Tell researchers about your work...">Principal Investigator focused on adaptive nanomaterials, federated AI, and quantum sensing for clean energy and health.</textarea>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Save Changes</button>
+                        </form>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="card" id="notifications" style="margin-bottom:24px;">
+                        <h3 class="card-title">Notification Preferences</h3>
+                        <div class="list-item">
+                            <div style="flex:1;">
+                                <div><strong class="text-primary">Funding Deadlines</strong></div>
+                                <div class="list-meta">Reminders when matched opportunities approach deadlines</div>
+                            </div>
+                            <label style="display:flex; align-items:center;">
+                                <input type="checkbox" checked>
+                            </label>
+                        </div>
+                        <div class="list-item">
+                            <div style="flex:1;">
+                                <div><strong class="text-primary">Citation Alerts</strong></div>
+                                <div class="list-meta">Notifications when your publications are cited</div>
+                            </div>
+                            <label style="display:flex; align-items:center;">
+                                <input type="checkbox" checked>
+                            </label>
+                        </div>
+                        <div class="list-item">
+                            <div style="flex:1;">
+                                <div><strong class="text-primary">Research Trend Updates</strong></div>
+                                <div class="list-meta">Weekly digest of new trends in your fields</div>
+                            </div>
+                            <label style="display:flex; align-items:center;">
+                                <input type="checkbox">
+                            </label>
+                        </div>
+                        <div class="list-item">
+                            <div style="flex:1;">
+                                <div><strong class="text-primary">AI Assistant Insights</strong></div>
+                                <div class="list-meta">Proactive insights from your research copilot</div>
+                            </div>
+                            <label style="display:flex; align-items:center;">
+                                <input type="checkbox" checked>
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" type="button" style="margin-top:8px;">Save Preferences</button>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="card" id="preferences" style="margin-bottom:24px;">
+                        <h3 class="card-title">General Preferences</h3>
+                        <div class="form-group">
+                            <label class="form-label" for="lang">Interface Language</label>
+                            <select class="form-select" id="lang">
+                                <option>English (US)</option>
+                                <option>English (UK)</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="currency">Currency</label>
+                            <select class="form-select" id="currency">
+                                <option>USD — US Dollar</option>
+                                <option>EUR — Euro</option>
+                                <option>GBP — British Pound</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Frequency</label>
+                            <select class="form-select">
+                                <option>Weekly Digest</option>
+                                <option>Daily Digest</option>
+                                <option>As They Happen</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" type="button">Save Preferences</button>
+                    </div>
+
+                    <!-- Security -->
+                    <div class="card" id="security">
+                        <h3 class="card-title">Security</h3>
+                        <div class="form-group">
+                            <label class="form-label" for="curpass">Current Password</label>
+                            <input class="form-input" type="password" id="curpass" placeholder="Enter current password">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="newpass">New Password</label>
+                                <input class="form-input" type="password" id="newpass" placeholder="Enter new password">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="confpass">Confirm New Password</label>
+                                <input class="form-input" type="password" id="confpass" placeholder="Confirm new password">
+                            </div>
+                        </div>
+                        <div class="alert">
+                            Use at least 8 characters with a mix of letters, numbers, and symbols.
+                        </div>
+                        <button class="btn btn-primary" type="button">Update Password</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand-logo">IH</span>
+                        InnovateHub
+                    </a>
+                    <p style="font-size:14px; color:rgba(255,255,255,.7);">
+                        AI-powered intelligence for research funding,
+                        innovation, and discovery.
+                    </p>
+                </div>
+                <div>
+                    <h4>Platform</h4>
+                    <a href="funding.html">Funding Opportunities</a>
+                    <a href="research.html">Research Explorer</a>
+                    <a href="patent.html">Patent Analysis</a>
+                    <a href="assistant.html">AI Assistant</a>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <a href="publications.html">Publications</a>
+                    <a href="profile.html">User Profile</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Sign Out</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 InnovateHub. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

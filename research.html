@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Explorer — InnovateHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">
+                <span class="brand-logo">IH</span>
+                InnovateHub
+            </a>
+            <button class="nav-toggle" onclick="toggleNav()">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="funding.html">Funding</a>
+                <a href="research.html" class="active">Research</a>
+                <a href="patent.html">Patents</a>
+                <a href="assistant.html">Assistant</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="nav-actions">
+                <a href="settings.html" class="btn btn-outline">Settings</a>
+                <a href="profile.html" class="avatar" title="User Profile">JD</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Research Explorer</h1>
+            <p>Analyze research trends, identify gaps, and benchmark against the global landscape.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">&#128200;</span>
+                    <div class="stat-value">48,240</div>
+                    <div class="stat-label">Publications Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#127919;</span>
+                    <div class="stat-value">1,204</div>
+                    <div class="stat-label">Active Research Topics</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#128202;</span>
+                    <div class="stat-value">+23%</div>
+                    <div class="stat-label">Trend Growth (YoY)</div>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="search-bar" style="margin:30px 0 26px;">
+                <input type="text" placeholder="Search topics, keywords, institutions, or authors...">
+                <button class="btn btn-primary" type="button">Analyze</button>
+            </div>
+
+            <!-- Trending topics -->
+            <h2 class="card-title" style="margin-bottom:20px;">Trending Research Topics</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Topic</th>
+                            <th>Field</th>
+                            <th>Publications</th>
+                            <th>Growth</th>
+                            <th>Interest</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="title">Adaptive Nanomaterials</span></td>
+                            <td>Materials Science</td>
+                            <td>18,420</td>
+                            <td><span class="badge badge-success">+41%</span></td>
+                            <td><strong class="text-primary">High</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="title">Federated AI Learning</span></td>
+                            <td>Computer Science</td>
+                            <td>12,905</td>
+                            <td><span class="badge badge-success">+36%</span></td>
+                            <td><strong class="text-primary">High</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="title">Quantum Error Correction</span></td>
+                            <td>Physics</td>
+                            <td>9,812</td>
+                            <td><span class="badge badge-success">+29%</span></td>
+                            <td><strong class="text-primary">High</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="title">CRISPR Gene Editing</span></td>
+                            <td>Biomedical</td>
+                            <td>22,310</td>
+                            <td><span class="badge badge-warning">+12%</span></td>
+                            <td><strong class="text-primary">Medium</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="title">Solid-State Batteries</span></td>
+                            <td>Chemistry</td>
+                            <td>8,645</td>
+                            <td><span class="badge badge-success">+33%</span></td>
+                            <td><strong class="text-primary">High</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Insights -->
+            <div class="two-col" style="margin-top:30px;">
+                <div class="card">
+                    <h3 class="card-title">Emerging Gaps</h3>
+                    <p style="font-size:15px; margin-bottom:14px;">
+                        AI identified underserved areas where your expertise could lead:
+                    </p>
+                    <div class="tag">AI for Materials Synthesis</div>
+                    <div class="tag">Quantum-Safe Encryption</div>
+                    <div class="tag">Decentralized Clinical Trials</div>
+                    <div class="tag">Battery Recycling Automation</div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Suggested Collaborations</h3>
+                    <div class="list-item">
+                        <div class="avatar">SB</div>
+                        <div>
+                            <div><strong class="text-primary">Dr. Sarah Brooks</strong> — MIT, Adaptive Nanomaterials</div>
+                            <div class="list-meta">82% alignment</div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar">RL</div>
+                        <div>
+                            <div><strong class="text-primary">Dr. Rajiv Luthra</strong> — Stanford, Federated AI</div>
+                            <div class="list-meta">76% alignment</div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar">EK</div>
+                        <div>
+                            <div><strong class="text-primary">Dr. Elena Kovac</strong> — ETH Zurich, Quantum Sensing</div>
+                            <div class="list-meta">71% alignment</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand-logo">IH</span>
+                        InnovateHub
+                    </a>
+                    <p style="font-size:14px; color:rgba(255,255,255,.7);">
+                        AI-powered intelligence for research funding,
+                        innovation, and discovery.
+                    </p>
+                </div>
+                <div>
+                    <h4>Platform</h4>
+                    <a href="funding.html">Funding Opportunities</a>
+                    <a href="research.html">Research Explorer</a>
+                    <a href="patent.html">Patent Analysis</a>
+                    <a href="assistant.html">AI Assistant</a>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <a href="publications.html">Publications</a>
+                    <a href="profile.html">User Profile</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Sign Out</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 InnovateHub. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

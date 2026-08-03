@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant — InnovateHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">
+                <span class="brand-logo">IH</span>
+                InnovateHub
+            </a>
+            <button class="nav-toggle" onclick="toggleNav()">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="funding.html">Funding</a>
+                <a href="research.html">Research</a>
+                <a href="patent.html">Patents</a>
+                <a href="assistant.html" class="active">Assistant</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="nav-actions">
+                <a href="settings.html" class="btn btn-outline">Settings</a>
+                <a href="profile.html" class="avatar" title="User Profile">JD</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>AI Assistant</h1>
+            <p>Ask questions, summarize literature, and get instant insights with your AI copilot.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="chat-shell">
+
+                <div class="chat-header">
+                    <div class="avatar" style="background:rgba(255,255,255,.18);">AI</div>
+                    <div>
+                        <div class="chat-title">Research Copilot</div>
+                        <div class="chat-sub">Powered by InnovateHub Intelligence</div>
+                    </div>
+                </div>
+
+                <div class="chat-body">
+
+                    <div class="chat-bubble ai">
+                        Hello Dr. Avery! I can help you find funding, summarize
+                        literature, analyze patents, and draft proposals. What
+                        would you like to explore today?
+                    </div>
+
+                    <div class="chat-bubble user">
+                        What are the latest funding opportunities in adaptive nanomaterials?
+                    </div>
+
+                    <div class="chat-bubble ai">
+                        I found 3 active funding opportunities matching your profile:
+                        <br><br>
+                        1. <strong>NSF — Advanced Materials for Clean Energy</strong> (7 days left, $800K)<br>
+                        2. <strong>DOE — Next-Gen Battery Research</strong> (21 days left, $1.1M)<br>
+                        3. <strong>ERC — Starting Grant</strong> (60 days left, $2.0M)
+                        <br><br>
+                        Would you like me to draft a matching statement for any of these?
+                    </div>
+
+                    <div class="chat-bubble user">
+                        Yes, please summarize the top 3 papers on federated learning in healthcare.
+                    </div>
+
+                    <div class="chat-bubble ai">
+                        Here's a concise summary of the top 3 recent papers:
+                        <br><br>
+                        1. <strong>"Privacy-Preserving Federated Diagnostics"</strong> — proposes a secure aggregation method improving model accuracy by 14%.
+                        <br>
+                        2. <strong>"Cross-Hospital Federated Imaging"</strong> — benchmarked 5 hospitals, showing robust generalization on MRI datasets.
+                        <br>
+                        3. <strong>"Federated Learning with Differential Privacy"</strong> — analyzes the privacy-utility tradeoff with new theoretical bounds.
+                        <br><br>
+                        Want a full literature review drafted for your proposal?
+                    </div>
+
+                </div>
+
+                <div class="chat-suggestions" style="padding:0 20px; padding-top:14px;">
+                    <button class="chat-suggestion" type="button">Find funding</button>
+                    <button class="chat-suggestion" type="button">Summarize literature</button>
+                    <button class="chat-suggestion" type="button">Patent white space</button>
+                    <button class="chat-suggestion" type="button">Draft proposal</button>
+                </div>
+
+                <div class="chat-input-bar">
+                    <input class="form-input" type="text" placeholder="Type your question...">
+                    <button class="btn btn-primary" type="button">Send</button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand-logo">IH</span>
+                        InnovateHub
+                    </a>
+                    <p style="font-size:14px; color:rgba(255,255,255,.7);">
+                        AI-powered intelligence for research funding,
+                        innovation, and discovery.
+                    </p>
+                </div>
+                <div>
+                    <h4>Platform</h4>
+                    <a href="funding.html">Funding Opportunities</a>
+                    <a href="research.html">Research Explorer</a>
+                    <a href="patent.html">Patent Analysis</a>
+                    <a href="assistant.html">AI Assistant</a>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <a href="publications.html">Publications</a>
+                    <a href="profile.html">User Profile</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Sign Out</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 InnovateHub. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

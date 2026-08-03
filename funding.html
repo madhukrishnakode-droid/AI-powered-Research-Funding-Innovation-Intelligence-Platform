@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funding Opportunities — InnovateHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">
+                <span class="brand-logo">IH</span>
+                InnovateHub
+            </a>
+            <button class="nav-toggle" onclick="toggleNav()">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="funding.html" class="active">Funding</a>
+                <a href="research.html">Research</a>
+                <a href="patent.html">Patents</a>
+                <a href="assistant.html">Assistant</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="nav-actions">
+                <a href="settings.html" class="btn btn-outline">Settings</a>
+                <a href="profile.html" class="avatar" title="User Profile">JD</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Funding Opportunities</h1>
+            <p>Discover grants, fellowships, and awards matched to your research profile.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Search & filters -->
+            <div class="filter-bar">
+                <div class="search-bar" style="flex:1; min-width:260px;">
+                    <input type="text" placeholder="Search funding opportunities...">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </div>
+                <select class="form-select">
+                    <option>All Categories</option>
+                    <option>STEM Research</option>
+                    <option>Biomedical</option>
+                    <option>Social Sciences</option>
+                    <option>Early Career</option>
+                </select>
+                <select class="form-select">
+                    <option>Any Deadline</option>
+                    <option>Next 30 Days</option>
+                    <option>Next 90 Days</option>
+                </select>
+                <button class="btn btn-outline" type="button">Filters</button>
+            </div>
+
+            <!-- Opportunities -->
+            <div class="three-col">
+
+                <div class="card card-hover">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                        <span class="badge">NSF</span>
+                        <span class="badge badge-warning">7 days left</span>
+                    </div>
+                    <h3 class="card-title" style="font-size:17px;">Advanced Materials for Clean Energy</h3>
+                    <p style="font-size:15px; margin-bottom:14px;">
+                        Supports fundamental research in adaptive materials for
+                        next-generation energy systems.
+                    </p>
+                    <div class="tag">Materials Science</div>
+                    <div class="tag">Energy</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+                        <span class="text-primary" style="font-weight:700;">$800K</span>
+                        <button class="btn btn-primary" type="button" style="padding:10px 18px; font-size:14px;">Apply</button>
+                    </div>
+                </div>
+
+                <div class="card card-hover">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                        <span class="badge">NIH</span>
+                        <span class="badge badge-success">45 days left</span>
+                    </div>
+                    <h3 class="card-title" style="font-size:17px;">AI-Driven Drug Discovery Initiative</h3>
+                    <p style="font-size:15px; margin-bottom:14px;">
+                        Funding for AI-assisted target identification and
+                        virtual screening pipelines.
+                    </p>
+                    <div class="tag">AI</div>
+                    <div class="tag">Biomedical</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+                        <span class="text-primary" style="font-weight:700;">$1.5M</span>
+                        <button class="btn btn-primary" type="button" style="padding:10px 18px; font-size:14px;">Apply</button>
+                    </div>
+                </div>
+
+                <div class="card card-hover">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                        <span class="badge">ERC</span>
+                        <span class="badge badge-success">60 days left</span>
+                    </div>
+                    <h3 class="card-title" style="font-size:17px;">Starting Grant — Quantum Sensing</h3>
+                    <p style="font-size:15px; margin-bottom:14px;">
+                        Early-career grants for pioneering research in quantum
+                        sensing and metrology.
+                    </p>
+                    <div class="tag">Quantum</div>
+                    <div class="tag">Early Career</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+                        <span class="text-primary" style="font-weight:700;">$2.0M</span>
+                        <button class="btn btn-primary" type="button" style="padding:10px 18px; font-size:14px;">Apply</button>
+                    </div>
+                </div>
+
+                <div class="card card-hover">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                        <span class="badge">DOE</span>
+                        <span class="badge badge-warning">21 days left</span>
+                    </div>
+                    <h3 class="card-title" style="font-size:17px;">Next-Gen Battery Research Program</h3>
+                    <p style="font-size:15px; margin-bottom:14px;">
+                        Collaborative research to accelerate solid-state and
+                        sustainable battery technologies.
+                    </p>
+                    <div class="tag">Energy</div>
+                    <div class="tag">Chemistry</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+                        <span class="text-primary" style="font-weight:700;">$1.1M</span>
+                        <button class="btn btn-primary" type="button" style="padding:10px 18px; font-size:14px;">Apply</button>
+                    </div>
+                </div>
+
+                <div class="card card-hover">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                        <span class="badge">Gates</span>
+                        <span class="badge badge-success">90 days left</span>
+                    </div>
+                    <h3 class="card-title" style="font-size:17px;">Grand Challenges — Global Health</h3>
+                    <p style="font-size:15px; margin-bottom:14px;">
+                        Innovative approaches to pressing global health and
+                        development challenges.
+                    </p>
+                    <div class="tag">Global Health</div>
+                    <div class="tag">Innovation</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+                        <span class="text-primary" style="font-weight:700;">$1.0M</span>
+                        <button class="btn btn-primary" type="button" style="padding:10px 18px; font-size:14px;">Apply</button>
+                    </div>
+                </div>
+
+                <div class="card card-hover">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                        <span class="badge">EU</span>
+                        <span class="badge badge-success">120 days left</span>
+                    </div>
+                    <h3 class="card-title" style="font-size:17px;">Horizon Europe — Digital Twins</h3>
+                    <p style="font-size:15px; margin-bottom:14px;">
+                        Research on digital twin frameworks for industrial and
+                        scientific applications.
+                    </p>
+                    <div class="tag">Digital Twins</div>
+                    <div class="tag">Computing</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+                        <span class="text-primary" style="font-weight:700;">$3.2M</span>
+                        <button class="btn btn-primary" type="button" style="padding:10px 18px; font-size:14px;">Apply</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand-logo">IH</span>
+                        InnovateHub
+                    </a>
+                    <p style="font-size:14px; color:rgba(255,255,255,.7);">
+                        AI-powered intelligence for research funding,
+                        innovation, and discovery.
+                    </p>
+                </div>
+                <div>
+                    <h4>Platform</h4>
+                    <a href="funding.html">Funding Opportunities</a>
+                    <a href="research.html">Research Explorer</a>
+                    <a href="patent.html">Patent Analysis</a>
+                    <a href="assistant.html">AI Assistant</a>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <a href="publications.html">Publications</a>
+                    <a href="profile.html">User Profile</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Sign Out</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 InnovateHub. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

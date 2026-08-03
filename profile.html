@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile — InnovateHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">
+                <span class="brand-logo">IH</span>
+                InnovateHub
+            </a>
+            <button class="nav-toggle" onclick="toggleNav()">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="funding.html">Funding</a>
+                <a href="research.html">Research</a>
+                <a href="patent.html">Patents</a>
+                <a href="assistant.html">Assistant</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="nav-actions">
+                <a href="settings.html" class="btn btn-outline">Settings</a>
+                <a href="profile.html" class="avatar" title="User Profile">JD</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>User Profile</h1>
+            <p>Your academic identity, research focus, and expertise areas.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="two-col">
+
+                <!-- Profile summary -->
+                <div class="card" style="text-align:center;">
+                    <div class="avatar avatar-lg" style="margin:0 auto 18px;">JD</div>
+                    <h3 class="card-title" style="margin-bottom:4px;">Dr. Jordan Avery</h3>
+                    <p class="text-secondary" style="font-size:15px; margin-bottom:8px;">
+                        Principal Investigator
+                    </p>
+                    <p class="text-secondary" style="font-size:14px; margin-bottom:16px;">
+                        University of Innovation &middot; Center for Advanced Materials
+                    </p>
+                    <span class="badge badge-gradient">Verified Researcher</span>
+
+                    <div style="margin-top:22px; text-align:left;">
+                        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #EEF2F7;">
+                            <span class="text-secondary" style="font-size:14px;">Email</span>
+                            <strong class="text-primary" style="font-size:14px;">j.avery@univ-innovation.edu</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #EEF2F7;">
+                            <span class="text-secondary" style="font-size:14px;">Location</span>
+                            <strong class="text-primary" style="font-size:14px;">Boston, MA, USA</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #EEF2F7;">
+                            <span class="text-secondary" style="font-size:14px;">Member Since</span>
+                            <strong class="text-primary" style="font-size:14px;">March 2022</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; padding:8px 0;">
+                            <span class="text-secondary" style="font-size:14px;">Impact Score</span>
+                            <strong class="text-primary" style="font-size:14px;">92 / 100</strong>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" type="button" style="margin-top:22px;">Edit Profile</button>
+                </div>
+
+                <!-- Research focus -->
+                <div>
+                    <div class="card" style="margin-bottom:24px;">
+                        <h3 class="card-title">Research Focus</h3>
+                        <div class="tag">Adaptive Nanomaterials</div>
+                        <div class="tag">Federated AI Learning</div>
+                        <div class="tag">Quantum Sensing</div>
+                        <div class="tag">Drug Discovery</div>
+                        <div class="tag">Clean Energy</div>
+                    </div>
+
+                    <div class="card" style="margin-bottom:24px;">
+                        <h3 class="card-title">Achievements</h3>
+                        <div class="list-item">
+                            <div>
+                                <div><strong class="text-primary">NSF CAREER Award</strong></div>
+                                <div class="list-meta">Awarded 2024 &middot; $500K</div>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div>
+                                <div><strong class="text-primary">Best Paper — IEEE ML for Health</strong></div>
+                                <div class="list-meta">Awarded 2025</div>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div>
+                                <div><strong class="text-primary">Rising Star in Materials Research</strong></div>
+                                <div class="list-meta">Recognized 2026</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Active Collaborations</h3>
+                        <div class="list-item">
+                            <div>
+                                <div><strong class="text-primary">Dr. Sarah Brooks</strong> — MIT</div>
+                                <div class="list-meta">Adaptive Nanomaterials</div>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div>
+                                <div><strong class="text-primary">Dr. Rajiv Luthra</strong> — Stanford</div>
+                                <div class="list-meta">Federated AI</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand-logo">IH</span>
+                        InnovateHub
+                    </a>
+                    <p style="font-size:14px; color:rgba(255,255,255,.7);">
+                        AI-powered intelligence for research funding,
+                        innovation, and discovery.
+                    </p>
+                </div>
+                <div>
+                    <h4>Platform</h4>
+                    <a href="funding.html">Funding Opportunities</a>
+                    <a href="research.html">Research Explorer</a>
+                    <a href="patent.html">Patent Analysis</a>
+                    <a href="assistant.html">AI Assistant</a>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <a href="publications.html">Publications</a>
+                    <a href="profile.html">User Profile</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Sign Out</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 InnovateHub. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications — InnovateHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">
+                <span class="brand-logo">IH</span>
+                InnovateHub
+            </a>
+            <button class="nav-toggle" onclick="toggleNav()">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="funding.html">Funding</a>
+                <a href="research.html">Research</a>
+                <a href="patent.html">Patents</a>
+                <a href="assistant.html">Assistant</a>
+                <a href="publications.html" class="active">Publications</a>
+            </div>
+            <div class="nav-actions">
+                <a href="settings.html" class="btn btn-outline">Settings</a>
+                <a href="profile.html" class="avatar" title="User Profile">JD</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Publications</h1>
+            <p>Track citations, manage your portfolio, and showcase your impact in one place.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">&#128218;</span>
+                    <div class="stat-value">38</div>
+                    <div class="stat-label">Publications</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#128200;</span>
+                    <div class="stat-value">4,120</div>
+                    <div class="stat-label">Total Citations</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#128278;</span>
+                    <div class="stat-value">14.2</div>
+                    <div class="stat-label">h-Index</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">&#9998;</span>
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Under Review</div>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="search-bar" style="margin:30px 0 26px;">
+                <input type="text" placeholder="Search your publications...">
+                <button class="btn btn-primary" type="button">Search</button>
+            </div>
+
+            <!-- Publications list -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Publication Portfolio</h3>
+                    <button class="btn btn-primary" type="button" style="padding:10px 18px; font-size:14px;">Add Publication</button>
+                </div>
+
+                <div class="list-item">
+                    <div>
+                        <div><strong class="text-primary">Adaptive Nanomaterials for Next-Generation Energy Storage</strong></div>
+                        <div class="text-secondary" style="font-size:14px;">Journal of Advanced Materials &middot; 2026</div>
+                        <div class="list-meta">312 citations &middot; Cited by 214 researchers</div>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div>
+                        <div><strong class="text-primary">Federated Learning for Privacy-Preserving Medical Diagnostics</strong></div>
+                        <div class="text-secondary" style="font-size:14px;">Nature Digital Medicine &middot; 2025</div>
+                        <div class="list-meta">288 citations &middot; Cited by 176 researchers</div>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div>
+                        <div><strong class="text-primary">Quantum-Safe Encryption Protocols for Healthcare Data</strong></div>
+                        <div class="text-secondary" style="font-size:14px;">IEEE Transactions on Information Security &middot; 2025</div>
+                        <div class="list-meta">194 citations &middot; Cited by 121 researchers</div>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div>
+                        <div><strong class="text-primary">AI-Assisted Drug Target Identification Using Graph Neural Networks</strong></div>
+                        <div class="text-secondary" style="font-size:14px;">Journal of Biomedical Informatics &middot; 2024</div>
+                        <div class="list-meta">167 citations &middot; Cited by 98 researchers</div>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div>
+                        <div><strong class="text-primary">Digital Twin Frameworks for Smart Energy Grids</strong></div>
+                        <div class="text-secondary" style="font-size:14px;">Energy Systems Research &middot; 2024</div>
+                        <div class="list-meta">142 citations &middot; Cited by 87 researchers</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand-logo">IH</span>
+                        InnovateHub
+                    </a>
+                    <p style="font-size:14px; color:rgba(255,255,255,.7);">
+                        AI-powered intelligence for research funding,
+                        innovation, and discovery.
+                    </p>
+                </div>
+                <div>
+                    <h4>Platform</h4>
+                    <a href="funding.html">Funding Opportunities</a>
+                    <a href="research.html">Research Explorer</a>
+                    <a href="patent.html">Patent Analysis</a>
+                    <a href="assistant.html">AI Assistant</a>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <a href="publications.html">Publications</a>
+                    <a href="profile.html">User Profile</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="index.html">Sign Out</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 InnovateHub. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

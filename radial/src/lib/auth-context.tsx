@@ -9,7 +9,7 @@ export type AuthUser = {
   name: string
   email: string
   picture: string
-  provider: Provider | 'demo'
+  provider: Provider | 'demo' | 'email'
 }
 
 const STORAGE_KEY = 'radial.auth.user'
@@ -26,6 +26,7 @@ type AuthContextValue = {
   user: AuthUser | null
   demoMode: boolean
   signIn: (provider: Provider) => void
+  signInWithCredentials: (email: string, name: string) => boolean
   signOut: () => void
   complete: (provider: Provider, code: string, state: string) => Promise<boolean>
 }
@@ -70,6 +71,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [router],
   )
 
+  const signInWithCredentials = useCallback(
+    (email: string, name: string): boolean => {
+      const trimmedEmail = email.trim().toLowerCase()
+      const trimmedName = name.trim()
+      if (!trimmedEmail) {
+        toast.error('Please enter your email address')
+        return false
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+        toast.error('Please enter a valid email address')
+        return false
+      }
+      if (!trimmedName) {
+        toast.error('Please enter your name')
+        return false
+      }
+
+      const next: AuthUser = {
+        sub: `email:${trimmedEmail}`,
+        name: trimmedName,
+        email: trimmedEmail,
+        picture: '',
+        provider: 'email',
+      }
+      setUser(next)
+      persistUser(next)
+      toast.success(`Welcome, ${next.name}`)
+      void router.navigate({ to: '/' })
+      return true
+    },
+    [router],
+  )
+
   const signOut = useCallback(() => {
     setUser(null)
     persistUser(null)
@@ -96,8 +130,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   )
 
   const value = useMemo<AuthContextValue>(
-    () => ({ user, demoMode, signIn, signOut, complete }),
-    [user, signIn, signOut, complete],
+    () => ({ user, demoMode, signIn, signInWithCredentials, signOut, complete }),
+    [user, signIn, signInWithCredentials, signOut, complete],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

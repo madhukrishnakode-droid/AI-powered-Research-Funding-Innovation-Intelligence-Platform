@@ -1,4 +1,5 @@
-import { Atom, Github } from 'lucide-react'
+import { useState, type FormEvent } from 'react'
+import { Atom, Mail } from 'lucide-react'
 import { toast } from 'sonner'
 import { useAuth } from '../lib/auth-context'
 import type { Provider } from '../lib/oauth'
@@ -27,7 +28,9 @@ function GoogleIcon() {
 }
 
 export function SignInScreen() {
-  const { signIn, demoMode } = useAuth()
+  const { signIn, signInWithCredentials, demoMode } = useAuth()
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
 
   const handleSignIn = (provider: Provider) => {
     try {
@@ -35,6 +38,11 @@ export function SignInScreen() {
     } catch {
       toast.error('Could not start sign-in')
     }
+  }
+
+  const handleCredentialSignIn = (event: FormEvent) => {
+    event.preventDefault()
+    signInWithCredentials(email, name)
   }
 
   return (
@@ -49,24 +57,64 @@ export function SignInScreen() {
         <div className="mt-6 rounded-2xl border border-slate-100 bg-white p-8 shadow-card">
           <h1 className="text-center font-serif text-2xl font-semibold text-slate-900">Welcome to Radial</h1>
           <p className="mt-2 text-center text-sm text-slate-500">
-            Sign in to continue to your research intelligence workspace.
+            Sign in with your email and name, or continue with an authentication provider.
           </p>
 
-          <div className="mt-6 space-y-3">
+          <form className="mt-6 space-y-4" onSubmit={handleCredentialSignIn}>
+            <div>
+              <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-700">
+                Email (Gmail)
+              </label>
+              <div className="relative">
+                <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@gmail.com"
+                  autoComplete="email"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm text-slate-900 placeholder-slate-400 transition-all duration-300 focus:border-cyan-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400/30"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-slate-700">
+                Full name
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Jane Doe"
+                autoComplete="name"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 transition-all duration-300 focus:border-cyan-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-400/30"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full rounded-xl bg-primary-gradient px-4 py-2.5 text-sm font-semibold text-white shadow-glow-blue transition-all duration-300 hover:brightness-110"
+            >
+              Sign in
+            </button>
+          </form>
+
+          <div className="my-6 flex items-center gap-3">
+            <div className="h-px flex-1 bg-slate-200" />
+            <span className="text-xs font-medium uppercase tracking-wide text-slate-400">or continue with</span>
+            <div className="h-px flex-1 bg-slate-200" />
+          </div>
+
+          <div className="space-y-3">
             <button
               onClick={() => handleSignIn('google')}
               className="flex w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-800 transition-all duration-300 hover:bg-slate-50"
             >
               <GoogleIcon />
               Continue with Google
-            </button>
-
-            <button
-              onClick={() => handleSignIn('github')}
-              className="flex w-full items-center justify-center gap-3 rounded-xl bg-secondary-gradient px-4 py-2.5 text-sm font-medium text-white shadow-glow-purple transition-all duration-300 hover:brightness-110"
-            >
-              <Github className="h-5 w-5" />
-              Continue with GitHub
             </button>
           </div>
 

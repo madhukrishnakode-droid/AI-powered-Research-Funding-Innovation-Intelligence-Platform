@@ -1,13 +1,65 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Link2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { useState } from 'react'
 import { Badge, Button, Card, CardTitle, PageHeader, SectionLabel } from '../components/ui'
+import { useAuth } from '../lib/auth-context'
 
 export const Route = createFileRoute('/settings')({
   component: SettingsPage,
 })
 
+const notifOptions = [
+  { key: 'deadlines', label: 'Funding deadlines', desc: 'Reminders when matched opportunities approach deadline' },
+  { key: 'patents', label: 'Patent status changes', desc: 'Examination reports, grants, and office actions' },
+  { key: 'citations', label: 'Citation milestones', desc: 'When your work crosses citation thresholds' },
+  { key: 'reports', label: 'Report generation', desc: 'When new intelligence reports are ready' },
+]
+
+const dataSources = [
+  { name: 'ORCID', detail: 'Synchronized · 58 publications', linked: true },
+  { name: 'Scopus', detail: 'Synchronized · citation metadata', linked: true },
+  { name: 'USPTO / EPO', detail: 'Synchronized · 5 patents', linked: true },
+  { name: 'Dimensions Analytics', detail: 'Not connected', linked: false },
+]
+
 function SettingsPage() {
+  const { user } = useAuth()
+  const [displayName, setDisplayName] = useState(user?.name ?? '')
+  const [email, setEmail] = useState(user?.email ?? '')
+  const [affiliation, setAffiliation] = useState('Center for Nanoscale Innovation, University of Geneva')
+  const [timezone, setTimezone] = useState('Europe/Zurich (CET)')
+  const [notifications, setNotifications] = useState<Record<string, boolean>>({
+    deadlines: true,
+    patents: true,
+    citations: true,
+    reports: false,
+  })
+
+  const saveProfile = () => {
+    if (!displayName.trim() || !email.trim()) {
+      toast.error('Display name and email are required')
+      return
+    }
+    toast.success('Profile settings saved')
+  }
+
+  const exportData = () => {
+    const data = {
+      profile: { displayName, email, affiliation, timezone },
+      notifications,
+      exportedAt: new Date().toISOString(),
+    }
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = 'radial-export.json'
+    link.click()
+    URL.revokeObjectURL(url)
+    toast.success('Workspace data exported')
+  }
+
   return (
     <div className="space-y-6">
       <PageHeader
@@ -24,27 +76,35 @@ function SettingsPage() {
               <label className="block">
                 <span className="mb-1.5 block text-sm text-slate-600">Display name</span>
                 <input
-                  defaultValue="Dr. Elena Vasquez"
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
                   className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500/60 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 />
               </label>
               <label className="block">
                 <span className="mb-1.5 block text-sm text-slate-600">Institutional email</span>
                 <input
-                  defaultValue="elena.vasquez@unige.ch"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500/60 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 />
               </label>
               <label className="block">
                 <span className="mb-1.5 block text-sm text-slate-600">Primary affiliation</span>
                 <input
-                  defaultValue="Center for Nanoscale Innovation, University of Geneva"
+                  value={affiliation}
+                  onChange={(e) => setAffiliation(e.target.value)}
                   className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500/60 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 />
               </label>
               <label className="block">
                 <span className="mb-1.5 block text-sm text-slate-600">Time zone</span>
-                <select className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500/60 focus:outline-none">
+                <select
+                  value={timezone}
+                  onChange={(e) => setTimezone(e.target.value)}
+                  className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500/60 focus:outline-none"
+                >
                   <option>Europe/Zurich (CET)</option>
                   <option>America/New_York</option>
                   <option>Asia/Tokyo</option>
@@ -52,7 +112,7 @@ function SettingsPage() {
               </label>
             </div>
             <div className="mt-4">
-              <Button onClick={() => toast.success('Profile settings saved')}>Save profile</Button>
+              <Button onClick={saveProfile}>Save profile</Button>
             </div>
           </Card>
 
@@ -60,18 +120,18 @@ function SettingsPage() {
           <Card>
             <SectionLabel>Notification Preferences</SectionLabel>
             <div className="mt-4 divide-y divide-slate-100">
-              {[
-                { label: 'Funding deadlines', desc: 'Reminders when matched opportunities approach deadline' },
-                { label: 'Patent status changes', desc: 'Examination reports, grants, and office actions' },
-                { label: 'Citation milestones', desc: 'When your work crosses citation thresholds' },
-                { label: 'Report generation', desc: 'When new intelligence reports are ready' },
-              ].map((n) => (
-                <label key={n.label} className="flex items-start justify-between gap-4 py-3 first:pt-0 last:pb-0">
+              {notifOptions.map((n) => (
+                <label key={n.key} className="flex items-start justify-between gap-4 py-3 first:pt-0 last:pb-0">
                   <div>
                     <p className="text-sm text-slate-900">{n.label}</p>
                     <p className="text-xs text-slate-500">{n.desc}</p>
                   </div>
-                  <input type="checkbox" defaultChecked className="mt-1 h-4 w-4 accent-blue-600" />
+                  <input
+                    type="checkbox"
+                    checked={Boolean(notifications[n.key])}
+                    onChange={(e) => setNotifications((prev) => ({ ...prev, [n.key]: e.target.checked }))}
+                    className="mt-1 h-4 w-4 accent-blue-600"
+                  />
                 </label>
               ))}
             </div>
@@ -84,12 +144,7 @@ function SettingsPage() {
           <Card>
             <SectionLabel>Data Sources</SectionLabel>
             <div className="mt-4 divide-y divide-slate-100">
-              {[
-                { name: 'ORCID', detail: 'Synchronized · 58 publications', linked: true },
-                { name: 'Scopus', detail: 'Synchronized · citation metadata', linked: true },
-                { name: 'USPTO / EPO', detail: 'Synchronized · 5 patents', linked: true },
-                { name: 'Dimensions Analytics', detail: 'Not connected', linked: false },
-              ].map((s) => (
+              {dataSources.map((s) => (
                 <div key={s.name} className="flex items-center justify-between gap-4 py-3 first:pt-0 last:pb-0">
                   <div className="flex items-center gap-3">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-r from-blue-600/10 to-cyan-500/10 text-blue-600">
@@ -100,7 +155,7 @@ function SettingsPage() {
                       <p className="text-xs text-slate-500">{s.detail}</p>
                     </div>
                   </div>
-                  {s.linked ? <Badge tone="emerald">Connected</Badge> : <Button variant="outline">Connect</Button>}
+                  {s.linked ? <Badge tone="emerald">Connected</Badge> : <Badge tone="slate">Not connected</Badge>}
                 </div>
               ))}
             </div>
@@ -122,20 +177,13 @@ function SettingsPage() {
           </Card>
 
           <Card className="border-amber-400/50">
-            <CardTitle>Danger Zone</CardTitle>
+            <CardTitle>Data</CardTitle>
             <p className="mt-2 text-sm text-slate-600">
-              Export or permanently delete your research profile and workspace data.
+              Export a copy of your research profile and workspace data.
             </p>
-            <div className="mt-4 flex flex-col gap-2">
-              <Button variant="outline" onClick={() => toast('Export requested — link sent to your email')}>
+            <div className="mt-4">
+              <Button variant="outline" className="w-full" onClick={exportData}>
                 Export data
-              </Button>
-              <Button
-                variant="outline"
-                className="border-red-300 text-red-600 hover:bg-red-50 hover:text-red-700"
-                onClick={() => toast.error('This action is not available in the demo')}
-              >
-                Delete workspace
               </Button>
             </div>
           </Card>

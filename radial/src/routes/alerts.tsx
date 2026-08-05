@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { BadgeDollarSign, BellRing, BookOpenCheck, CheckCheck, FlaskConical, Users } from 'lucide-react'
-import { toast } from 'sonner'
+import { useState } from 'react'
 import { Button, Card, PageHeader } from '../components/ui'
-import { alerts } from '../lib/data'
+import { alerts as initialAlerts } from '../lib/data'
 import type { AlertItem } from '../lib/data'
 
 export const Route = createFileRoute('/alerts')({
@@ -17,7 +17,17 @@ const typeMeta: Record<AlertItem['type'], { icon: typeof BellRing; label: string
   collab: { icon: Users, label: 'Collaboration' },
 }
 
-function AlertList({ items, title }: { items: AlertItem[]; title: string }) {
+function AlertList({
+  items,
+  title,
+  onMarkRead,
+  canMarkRead,
+}: {
+  items: AlertItem[]
+  title: string
+  onMarkRead: (id: string) => void
+  canMarkRead: boolean
+}) {
   if (items.length === 0) return null
   return (
     <section className="space-y-3">
@@ -35,13 +45,15 @@ function AlertList({ items, title }: { items: AlertItem[]; title: string }) {
                 <p className="text-sm text-slate-600">{alert.message}</p>
                 <p className="mt-0.5 text-xs text-slate-500">{meta.label} · {alert.time}</p>
               </div>
-              <Button
-                variant="ghost"
-                aria-label="Mark as read"
-                onClick={() => toast('Marked as read')}
-              >
-                <CheckCheck className="h-4 w-4" />
-              </Button>
+              {canMarkRead && (
+                <Button
+                  variant="ghost"
+                  aria-label="Mark as read"
+                  onClick={() => onMarkRead(alert.id)}
+                >
+                  <CheckCheck className="h-4 w-4" />
+                </Button>
+              )}
             </div>
           )
         })}
@@ -51,8 +63,18 @@ function AlertList({ items, title }: { items: AlertItem[]; title: string }) {
 }
 
 function AlertsPage() {
+  const [alerts, setAlerts] = useState<AlertItem[]>(initialAlerts)
+
   const unread = alerts.filter((a) => !a.read)
   const read = alerts.filter((a) => a.read)
+
+  const markRead = (id: string) => {
+    setAlerts((prev) => prev.map((a) => (a.id === id ? { ...a, read: true } : a)))
+  }
+
+  const markAllRead = () => {
+    setAlerts((prev) => prev.map((a) => ({ ...a, read: true })))
+  }
 
   return (
     <div className="space-y-6">
@@ -61,11 +83,11 @@ function AlertsPage() {
         subtitle="Patent updates, grant deadlines, citation milestones, and system notifications."
       />
 
-      <AlertList items={unread} title="New" />
-      <AlertList items={read} title="Earlier" />
+      <AlertList items={unread} title="New" onMarkRead={markRead} canMarkRead />
+      <AlertList items={read} title="Earlier" onMarkRead={markRead} canMarkRead={false} />
 
       {unread.length > 0 && (
-        <Button variant="outline" onClick={() => toast('All alerts marked as read')}>
+        <Button variant="outline" onClick={markAllRead}>
           <CheckCheck className="h-4 w-4" /> Mark all as read
         </Button>
       )}

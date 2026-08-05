@@ -38,6 +38,7 @@ function RootComponent() {
 function RootInner() {
   const { user } = useAuth()
   const [collapsed, setCollapsed] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = useRouterState({ select: (s) => s.location.pathname })
   const isCallback = pathname === '/auth/callback'
   const signedIn = Boolean(user)
@@ -50,10 +51,20 @@ function RootInner() {
           <SignInScreen />
         ) : (
           <>
-            <AppSidebar collapsed={collapsed} onToggle={() => setCollapsed((c) => !c)} />
-            <div className={cn('flex min-h-screen flex-col transition-all duration-300', collapsed ? 'ml-16' : 'ml-64')}>
-              <TopBar />
-              <main className="flex-1 p-6">
+            <AppSidebar
+              collapsed={collapsed}
+              onToggle={() => setCollapsed((c) => !c)}
+              mobileOpen={mobileOpen}
+              onMobileClose={() => setMobileOpen(false)}
+            />
+            <div
+              className={cn(
+                'flex min-h-screen flex-col transition-all duration-300',
+                collapsed ? 'md:ml-16' : 'md:ml-64',
+              )}
+            >
+              <TopBar onOpenMenu={() => setMobileOpen(true)} />
+              <main className="flex-1 px-4 py-6 sm:px-6">
                 <Outlet />
               </main>
             </div>

@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ArrowRight, Search, Sparkles } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import { Avatar, Badge, Card, CardTitle, Tag } from '../components/ui'
 import { useAuth } from '../lib/auth-context'
 import { activity, portfolioSummary, trends } from '../lib/data'
@@ -11,38 +11,24 @@ export const Route = createFileRoute('/')({
 
 function HomePage() {
   const { user } = useAuth()
-  const givenName = user?.name?.replace(/^Dr\.\s*/i, '').split(' ')[0] ?? 'Elena'
+  const givenName = user?.name?.replace(/^Dr\.\s*/i, '').split(' ')[0] ?? 'Researcher'
 
   return (
     <div className="space-y-6">
       {/* Hero */}
-      <section className="rounded-2xl border border-white/10 bg-hero-gradient p-8 shadow-card">
-        <div className="max-w-2xl">
-          <p className="mb-2 text-sm text-cyan-300">Monday, March 2, 2026</p>
-          <div className="flex items-center gap-3">
-            <h1 className="font-serif text-3xl font-semibold text-white">
+      <section className="overflow-hidden rounded-2xl border border-white/10 bg-hero-gradient px-6 py-10 shadow-card sm:px-10 sm:py-12">
+        <div className="mx-auto flex min-h-[160px] max-w-2xl flex-col justify-center">
+          <p className="mb-3 text-sm font-medium text-cyan-300">Monday, March 2, 2026</p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+            <h1 className="break-words font-serif text-2xl font-semibold leading-tight text-white sm:text-3xl">
               Welcome back, {givenName}
             </h1>
             {user?.provider === 'demo' && <Badge tone="amber">Demo session</Badge>}
           </div>
-          <p className="mt-2 text-sm text-slate-300">
+          <p className="mt-3 text-sm leading-relaxed text-slate-300">
             Your portfolio gained <span className="font-medium text-cyan-300">+312 citations</span> this month.
             Two opportunities match your methodology within 94%.
           </p>
-        </div>
-
-        {/* Hero search */}
-        <div className="mt-6 max-w-2xl rounded-2xl border border-white/20 bg-white/10 p-px backdrop-blur">
-          <div className="flex items-center gap-3 rounded-[15px] bg-slate-950/40 px-4 py-3">
-            <Search className="h-5 w-5 shrink-0 text-slate-400" />
-            <input
-              placeholder="Search papers, patents, grants, and researchers..."
-              className="w-full bg-transparent text-sm text-white placeholder:text-slate-400 focus:outline-none"
-            />
-            <button className="shrink-0 rounded-lg bg-white px-3 py-1.5 text-sm font-medium text-slate-900 transition-colors hover:bg-cyan-100">
-              Search
-            </button>
-          </div>
         </div>
       </section>
 
@@ -61,7 +47,6 @@ function HomePage() {
               <p className="text-xs uppercase tracking-wider text-slate-500">{s.label}</p>
               <p className="mt-1 font-serif text-2xl font-semibold text-slate-900">{s.value}</p>
             </div>
-            <ArrowRight className="h-5 w-5 text-blue-600" />
           </Card>
         ))}
       </section>
@@ -69,10 +54,7 @@ function HomePage() {
       <div className="grid gap-6 xl:grid-cols-3">
         {/* New trends */}
         <section className="space-y-4 xl:col-span-2">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-white">New Trends</h2>
-            <span className="text-sm text-cyan-400">View all</span>
-          </div>
+          <h2 className="text-lg font-semibold text-white">New Trends</h2>
 
           <div className="grid gap-4 md:grid-cols-2">
             {trends.map((trend) => (

@@ -120,9 +120,9 @@ export function SignInScreen() {
 
           {demoMode && (
             <p className="mt-6 rounded-lg border border-amber-400/40 bg-amber-50 p-3 text-center text-xs leading-relaxed text-amber-700">
-              Demo mode — no OAuth credentials configured. Sign-in uses a demo profile.
+              Demo mode — no Google OAuth credentials configured. Sign-in uses a demo profile.
               <br />
-              See <code className="text-blue-700">.env.example</code> to enable Google or GitHub.
+              See <code className="text-blue-700">.env.example</code> to enable Google sign-in.
             </p>
           )}
         </div>

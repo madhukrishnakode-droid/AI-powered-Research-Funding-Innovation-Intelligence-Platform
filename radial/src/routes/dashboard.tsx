@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ArrowUpRight, FileText, TrendingUp } from 'lucide-react'
+import { FileText, TrendingUp } from 'lucide-react'
 import { Badge, Card, CardTitle, PageHeader, ProgressBar, ScoreRing, SectionLabel, Tag } from '../components/ui'
 import { activity, funding, patents, scoreBreakdown, trends } from '../lib/data'
 
@@ -137,7 +137,6 @@ function DashboardPage() {
                   <Badge tone={p.status === 'granted' ? 'emerald' : 'amber'}>
                     {p.status === 'granted' ? 'Granted' : 'Under Examination'}
                   </Badge>
-                  <ArrowUpRight className="h-4 w-4 text-slate-400" />
                 </div>
               </div>
             ))}

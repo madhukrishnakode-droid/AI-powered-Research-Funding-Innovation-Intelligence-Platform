@@ -52,16 +52,36 @@ const navSections: { label: string; items: NavItem[] }[] = [
   },
 ]
 
-export function AppSidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) {
+export function AppSidebar({
+  collapsed,
+  onToggle,
+  mobileOpen,
+  onMobileClose,
+}: {
+  collapsed: boolean
+  onToggle: () => void
+  mobileOpen: boolean
+  onMobileClose: () => void
+}) {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
 
   return (
-    <aside
-      className={cn(
-        'fixed inset-y-0 left-0 z-40 flex flex-col border-r border-white/10 bg-slate-900/80 backdrop-blur transition-all duration-300',
-        collapsed ? 'w-16' : 'w-64',
+    <>
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-slate-950/60 backdrop-blur-sm md:hidden"
+          onClick={onMobileClose}
+          aria-hidden="true"
+        />
       )}
-    >
+      <aside
+        className={cn(
+          'fixed inset-y-0 left-0 z-40 flex flex-col border-r border-white/10 bg-slate-900/95 backdrop-blur transition-all duration-300',
+          collapsed ? 'w-16' : 'w-64',
+          mobileOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full',
+          'md:translate-x-0 md:bg-slate-900/80',
+        )}
+      >
       {/* Logo */}
       <div
         className={cn(
@@ -98,6 +118,7 @@ export function AppSidebar({ collapsed, onToggle }: { collapsed: boolean; onTogg
                     <Link
                       to={item.to}
                       title={collapsed ? item.label : undefined}
+                      onClick={onMobileClose}
                       className={cn(
                         'flex items-center gap-3 rounded-xl py-2 text-sm transition-all duration-300',
                         collapsed ? 'justify-center px-0' : 'px-3',
@@ -135,5 +156,6 @@ export function AppSidebar({ collapsed, onToggle }: { collapsed: boolean; onTogg
         </button>
       </div>
     </aside>
+    </>
   )
 }

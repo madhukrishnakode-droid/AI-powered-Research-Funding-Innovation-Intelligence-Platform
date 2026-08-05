@@ -1,7 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { CalendarPlus, Cpu, FlaskConical, Gauge, MapPin, Microscope } from 'lucide-react'
 import { toast } from 'sonner'
-import { Badge, Button, Card, CardTitle, PageHeader } from '../components/ui'
+import { useState } from 'react'
+import { Badge, Button, Card, PageHeader } from '../components/ui'
 import { resources } from '../lib/data'
 import type { Resource } from '../lib/data'
 
@@ -23,6 +24,9 @@ function ResourceCard({ resource }: { resource: Resource }) {
     resource.status === 'available' ? 'emerald' : resource.status === 'in-use' ? 'amber' : 'slate'
   const statusLabel =
     resource.status === 'available' ? 'Available' : resource.status === 'in-use' ? 'In Use' : 'Maintenance'
+  const [requested, setRequested] = useState(false)
+
+  const bookable = resource.status === 'available' && !requested
 
   return (
     <Card className="flex flex-col">
@@ -43,10 +47,13 @@ function ResourceCard({ resource }: { resource: Resource }) {
         <Button
           className="w-full"
           variant="outline"
-          disabled={resource.status !== 'available'}
-          onClick={() => toast(`Booking requested: ${resource.name}`)}
+          disabled={!bookable}
+          onClick={() => {
+            setRequested(true)
+            toast.success(`Booking requested: ${resource.name}`)
+          }}
         >
-          <CalendarPlus className="h-4 w-4" /> Book
+          <CalendarPlus className="h-4 w-4" /> {requested ? 'Requested' : 'Book'}
         </Button>
       </div>
     </Card>

@@ -1,3 +1,4 @@
+import { pathToFileURL } from 'node:url'
 import express from 'express'
 import cors from 'cors'
 
@@ -115,7 +116,12 @@ async function githubExchange(req, res) {
 app.post('/api/oauth/exchange/google', googleExchange)
 app.post('/api/oauth/exchange/github', githubExchange)
 
-const port = Number(process.env.PORT) || 3001
-app.listen(port, () => {
-  console.log(`Radial OAuth exchange server listening on http://localhost:${port}`)
-})
+export default app
+
+const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href
+if (isMain) {
+  const port = Number(process.env.PORT) || 3001
+  app.listen(port, () => {
+    console.log(`Radial OAuth exchange server listening on http://localhost:${port}`)
+  })
+}

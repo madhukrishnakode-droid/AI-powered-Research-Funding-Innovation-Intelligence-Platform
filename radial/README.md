@@ -109,5 +109,8 @@ radial/
 
 ## Deployment Notes
 
-- Secrets must live in server-side env vars only. The exchange server is a development convenience — for production, replace it with a serverless function or a proper backend route, and serve the built `dist/` folder behind the same origin.
+- **Vercel** — the project is configured for Vercel (`vercel.json` in the repo root, Root Directory `radial`). `vercel.json` rewrites `/api/*` to the serverless function at `api/index.mjs` (the Express exchange server) and falls back to `index.html` for client-side routing.
+- **Environment variables** — set these in Vercel (Settings → Environment Variables): `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `VITE_GOOGLE_CLIENT_ID` (Vite inlines `VITE_` vars at build time, so redeploy after setting them). Do **not** commit secrets to the repo.
+- **Google OAuth** — add your production URL to the OAuth client's Authorized redirect URIs, e.g. `https://<your-app>.vercel.app/auth/callback`.
+- The dev server (`npm run server` / `npm run dev:full`) still runs the same Express app locally on `:3001`.
 - `dist/`, `node_modules/`, `.env`, and log files are gitignored.

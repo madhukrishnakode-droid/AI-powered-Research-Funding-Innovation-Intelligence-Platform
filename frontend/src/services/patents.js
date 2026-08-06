@@ -5,6 +5,10 @@ const patentsService = {
     const response = await api.get('/patents/')
     return response.data
   },
+  getAll: async () => {
+    const response = await api.get('/patents/')
+    return response.data
+  },
   create: async (patentData) => {
     const response = await api.post('/patents/', patentData)
     return response.data

@@ -10,6 +10,9 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
     
+    GOOGLE_CLIENT_ID: str = ""
+    GOOGLE_CLIENT_SECRET: str = ""
+    
     DB_HOST: str = "localhost"
     DB_PORT: int = 3306
     DB_USER: str = "root"
@@ -35,3 +38,9 @@ class Settings(BaseSettings):
     )
 
 settings = Settings()
+
+print("===================================")
+print("GOOGLE_CLIENT_ID:", settings.GOOGLE_CLIENT_ID)
+print("GOOGLE_CLIENT_SECRET:", settings.GOOGLE_CLIENT_SECRET)
+print("DB_NAME:", settings.DB_NAME)
+print("===================================")

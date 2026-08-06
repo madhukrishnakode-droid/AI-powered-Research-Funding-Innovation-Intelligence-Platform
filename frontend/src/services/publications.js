@@ -5,6 +5,10 @@ const publicationsService = {
     const response = await api.get('/publications/')
     return response.data
   },
+  getAll: async () => {
+    const response = await api.get('/publications/')
+    return response.data
+  },
   create: async (pubData) => {
     const response = await api.post('/publications/', pubData)
     return response.data

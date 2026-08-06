@@ -31,6 +31,18 @@ export const AuthProvider = ({ children }) => {
     return profile
   }
 
+  const loginWithToken = async (token) => {
+    localStorage.setItem('token', token)
+    try {
+      const profile = await authService.getProfile()
+      setUser(profile)
+      return profile
+    } catch (err) {
+      localStorage.removeItem('token')
+      throw err
+    }
+  }
+
   const logout = async () => {
     try {
       await authService.logout()
@@ -47,7 +59,8 @@ export const AuthProvider = ({ children }) => {
     user,
     loading,
     login,
-    logout
+    logout,
+    loginWithToken
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

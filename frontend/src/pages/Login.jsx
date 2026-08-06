@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useNavigate, Link, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 function Login() {
@@ -7,8 +7,31 @@ function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const { login } = useAuth()
+  const { login, loginWithToken } = useAuth()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    const token = searchParams.get('token')
+    const oauthError = searchParams.get('error')
+
+    if (token) {
+      setLoading(true)
+      setError('')
+      loginWithToken(token)
+        .then(() => {
+          navigate('/dashboard')
+        })
+        .catch((err) => {
+          setError(err.response?.data?.detail || 'Authentication failed during Google login.')
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    } else if (oauthError) {
+      setError(decodeURIComponent(oauthError))
+    }
+  }, [searchParams, loginWithToken, navigate])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -49,6 +72,44 @@ function Login() {
             {loading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
+
+        <div style={{ display: 'flex', alignItems: 'center', margin: '1.5rem 0', color: 'var(--text-secondary)' }}>
+          <div style={{ flex: 1, height: '1px', backgroundColor: '#e5e7eb' }}></div>
+          <span style={{ padding: '0 0.75rem', fontSize: '0.875rem' }}>or</span>
+          <div style={{ flex: 1, height: '1px', backgroundColor: '#e5e7eb' }}></div>
+        </div>
+
+        <button 
+          onClick={() => window.location.href = 'http://localhost:8000/auth/google'}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.75rem',
+            width: '100%',
+            padding: '0.75rem',
+            borderRadius: '8px',
+            border: '1px solid #d1d5db',
+            backgroundColor: '#ffffff',
+            color: '#374151',
+            fontSize: '0.95rem',
+            fontWeight: 550,
+            cursor: 'pointer',
+            transition: 'background-color 0.2s',
+            boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+          }}
+          onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f9fafb'}
+          onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
+          type="button"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.69a5.74 5.74 0 0 1-2.49 3.77v3.1h4.01c2.34-2.16 3.68-5.32 3.68-8.72z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-4.01-3.1c-1.12.75-2.54 1.19-3.95 1.19-2.72 0-5.02-1.84-5.85-4.3H2.007v3.13C3.98 21.89 7.73 24 12 24z"/>
+            <path fill="#FBBC05" d="M6.15 14.88a7.19 7.19 0 0 1 0-2.3v-3.13H2.007a11.96 11.96 0 0 0 0 8.56l4.143-3.13z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.22 0 12 0 7.73 0 3.98 2.11 2.007 5.37l4.143 3.13c.83-2.46 3.13-4.3 5.85-4.3z"/>
+          </svg>
+          Continue with Google
+        </button>
         
         <p style={{ marginTop: '1.5rem', fontSize: '0.875rem', color: 'var(--text-secondary)', textAlign: 'center' }}>
           Don't have an account? <Link to="/register" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontWeight: 650 }}>Register here</Link>

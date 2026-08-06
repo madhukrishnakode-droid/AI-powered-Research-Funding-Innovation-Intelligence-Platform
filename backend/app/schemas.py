@@ -106,6 +106,121 @@ class UserUpdate(BaseModel):
     role: Optional[str] = None
     login_type: Optional[str] = None
 
+# ==========================================
+# REPORT SCHEMAS
+# ==========================================
+class ReportBase(BaseModel):
+    title: str
+    report_type: str
+    file_size: str
+    preview_snippet: Optional[str] = None
+
+class ReportCreate(ReportBase):
+    pass
+
+class Report(ReportBase):
+    id: int
+    user_id: int
+    generated_date: datetime
+
+    class Config:
+        from_attributes = True
+
+# ==========================================
+# COLLABORATION SCHEMAS
+# ==========================================
+class CollaborationBase(BaseModel):
+    researcher_name: str
+    institution: str
+    overlap_topics: str
+    collaboration_score: int
+
+class CollaborationCreate(CollaborationBase):
+    pass
+
+class Collaboration(CollaborationBase):
+    id: int
+    user_id: int
+
+    class Config:
+        from_attributes = True
+
+# ==========================================
+# LAB RESOURCE SCHEMAS
+# ==========================================
+class LabResourceBase(BaseModel):
+    name: str
+    resource_type: str
+    availability_status: str
+    location: str
+
+class LabResourceCreate(LabResourceBase):
+    pass
+
+class LabResource(LabResourceBase):
+    id: int
+    user_id: int
+
+    class Config:
+        from_attributes = True
+
+# ==========================================
+# ALERT SCHEMAS
+# ==========================================
+class AlertBase(BaseModel):
+    alert_type: str
+    message: str
+    is_read: bool = False
+
+class AlertCreate(AlertBase):
+    pass
+
+class Alert(AlertBase):
+    id: int
+    user_id: int
+    timestamp: datetime
+
+    class Config:
+        from_attributes = True
+
+# ==========================================
+# USER SETTINGS SCHEMAS
+# ==========================================
+class UserSettingBase(BaseModel):
+    email_notifications: bool = True
+    push_notifications: bool = True
+    profile_visibility: str = "public"
+
+class UserSetting(UserSettingBase):
+    id: int
+    user_id: int
+
+    class Config:
+        from_attributes = True
+
+# ==========================================
+# FUNDING SCHEMAS
+# ==========================================
+class FundingOpportunityBase(BaseModel):
+    title: str
+    funder: str
+    amount_range: str
+    deadline: date
+    semantic_fit: int = 90
+    match_badges: str = "Topic match,Methodology match"
+
+class FundingOpportunityCreate(FundingOpportunityBase):
+    pass
+
+class FundingOpportunity(FundingOpportunityBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+# ==========================================
+# USER SCHEMAS
+# ==========================================
 class User(UserBase):
     id: int
     created_at: datetime
@@ -114,6 +229,11 @@ class User(UserBase):
     profile: Optional[ResearchProfile] = None
     publications: List[Publication] = []
     patents: List[Patent] = []
+    reports: List[Report] = []
+    collaborations: List[Collaboration] = []
+    lab_resources: List[LabResource] = []
+    alerts: List[Alert] = []
+    settings: Optional[UserSetting] = None
 
     class Config:
         from_attributes = True
@@ -130,4 +250,5 @@ class TokenData(BaseModel):
 
 class ForgotPasswordRequest(BaseModel):
     email: str
+
 

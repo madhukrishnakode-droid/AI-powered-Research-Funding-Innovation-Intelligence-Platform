@@ -1,12 +1,12 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import AppRoutes from './routes/AppRoutes'
+import { RouterProvider } from '@tanstack/react-router'
+import { router } from './routes/router'
 import { AuthProvider } from './context/AuthContext'
 
 function App() {
   return (
     <AuthProvider>
-      <AppRoutes />
+      <RouterProvider router={router} />
     </AuthProvider>
   )
 }

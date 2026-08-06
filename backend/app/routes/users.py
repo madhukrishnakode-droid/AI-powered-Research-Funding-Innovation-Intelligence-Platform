@@ -39,10 +39,20 @@ def update_my_profile(
     """Modify research designation, org, domains, keywords, and bios."""
     profile = current_user.profile
     if not profile:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, 
-            detail="Profile not found. Create one first utilizing POST /me/profile."
+        profile = ResearchProfile(
+            organization=profile_in.organization or "",
+            designation=profile_in.designation or "",
+            research_domain=profile_in.research_domain or "",
+            technology_area=profile_in.technology_area or "",
+            research_interests=profile_in.research_interests or "",
+            keywords=profile_in.keywords or "",
+            bio=profile_in.bio or "",
+            user_id=current_user.id
         )
+        db.add(profile)
+        db.commit()
+        db.refresh(profile)
+        return profile
     
     update_data = profile_in.model_dump(exclude_unset=True)
     for field, val in update_data.items():
